@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-// require('dotenv').config("");
-// const PORT  = process.env.PORT;
-const PORT = 8080;
+require('dotenv').config("");
+const PORT  = process.env.PORT || 3000;
 const { dbConnection } = require('./config/db');
 const cors = require('cors');
 const routes = require('./routes/productRoutes');
@@ -17,7 +16,7 @@ app.use(express.static('./public/images'));
 
 // })
 
-app.use('/', routes);
+app.use('/', routes); 
 
 
 dbConnection();

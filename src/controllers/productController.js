@@ -1,5 +1,7 @@
+const {Product} = require('../models/Product');
 
-const generateHome = () => {
+
+const generateHomePage = () => {
     const home = `
         <h1>Home</h1>
         <nav class="nav">
@@ -38,17 +40,58 @@ const generateHome = () => {
         `
     return home;
 };
+
+
 const generateDashboard = () => {
     const dashboard = `<h1>Dashboard</h1>`
     return dashboard; 
 };
 
+
 const newProductForm = () => {
-    const productForm = `Product form`;
+    const productForm = `
+        <form action="/dashboard" method="post">
+            <label for="name">Name</label>
+            <input type="text" class="form" id="nameValue" required><br>
+            <label for="description">Description</label>
+            <input type="text" class="form" id="descriptionValue" required><br>
+            <label for="category">Category</label>
+            <input type="text" class="form" id="categoryValue" required><br>
+            <label for="size">Size</label>
+            <input type="text" class="form" id="sizeValue" required><br>
+            <label for="units">Units</label>
+            <input type="text" class="form" id="unitsValue" required>
+            <button type="submit" id="submitButton">Send</button>
+        </form>
+        <script>
+           const boton = document.getElementById("submitButton");
+           function action() {
+            alert("Hello!");
+};
+           boton.addEventListener("click", action)
+            
+        </script>
+    `;
     return productForm;
 };
+
+const generateProduct = (id) => {
+    const product = `<p>${id}</p>
+    `
+    return product
+}
+
 module.exports = {
     generateDashboard,
     newProductForm,
-    generateHome
+    generateHomePage,
+    generateProduct
 }
+
+function fetchData() {
+    fetch("http://localhost:8080/dashboard/new")
+
+    .then()
+};
+
+fetchData()
