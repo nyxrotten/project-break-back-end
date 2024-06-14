@@ -1,3 +1,291 @@
-#submitButton {
-    background-color: red;
+:root {
+    --sand: #F0F1D3;
+    --green: #60895D;
+    --lightGreen: #B2DEAF;
+    --blue: #AFC2DE;
+    --pink: #DEAFCB;
 }
+
+body {
+    font-family: "Noto Serif", serif;
+    background-color: var(--sand)
+}
+
+/*PRODUCTS*/
+.nav {
+    margin-top: 50px;
+}
+.nav,
+.nav ul {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+}
+ul  {
+    list-style: none;
+}
+
+li {
+    width: 100px;
+    text-align: center;
+    background-color: var(--green);
+}
+
+li:hover {
+    background-color: var(--lightGreen);
+}
+
+a {
+
+    text-decoration: none;
+    color: #E7EEF1;
+}
+
+h1 {
+    text-align: center;
+    color: var(--lightGreen);
+}
+ h2 {
+    color: var(--green);
+    font-weight: 300;
+ }
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+
+.box {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    row-gap: 10px;
+}
+
+.see {
+    text-align: center;
+    font-family: "Noto Serif", serif;
+    font-weight: 700;
+    width: 100px;
+    height: 25px;
+    border: none;
+    margin-top: 15px;
+    background-color: var(--sand);
+    color: var(--lightGreen);
+    border: 2px solid var(--lightGreen);
+}
+
+.see:hover {
+    background-color: var(--pink);
+    border: 2px solid var(--pink);
+    color:  var(--sand);
+}
+
+/* DASHBOARD/NEW */
+
+.formSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    
+}
+
+.newForm {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: #B2DDAF;
+    padding: 20px;
+}
+
+.newForm input {
+    border: none;
+    height: 10px;
+    padding: 15px;
+    font-family: "Noto Serif";
+}
+
+.newForm button {
+    margin-top: 20px;
+    height: 50px;
+    border: none;
+    font-family: "Noto Serif", Serif;
+    font-size: 1.2em;
+    background-color: #B2DDAF;
+    border: 3px solid white;
+    font-weight: 600;
+    color: white;
+}
+
+.newForm button:hover {
+    background-color: var(--pink);
+    border: 3px solid var(--pink);
+    color: var(--sand);}
+
+/*PRODUCTS :ID*/
+
+#cardPage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding-top: 30px;
+
+}
+
+#home,
+#editSave,
+#goDashboard {
+    text-align: center;
+    width: 390px;
+    padding: 15px 15px;
+    background-color: var(--pink);
+    border: none;
+    font-family: "Noto Serif", serif;
+    font-weight: 600;
+    color: var(--sand);
+    margin-top: 15px;
+}
+
+#goDashboard {
+    background-color: var(--green);
+    width: 360px;
+    margin-bottom: 20px;
+}
+
+#home:hover,
+#editSave:hover,
+#goDashboard:hover {
+    background-color: var(--sand);
+    color: var(--green);
+    background-color: var(--lightGreen);
+}
+
+#cardPage img,
+h2, h3, h4 {
+    width: 400px;
+}
+
+#cardPage h4 {
+    font-weight: 300;
+}
+
+/* DASHBOARD/ :ID */
+
+.edit {
+    background-color: var(--blue);
+    border: none;
+    font-family: "Noto Serif", serif;
+    text-align: left;
+    width: 390px;
+    padding: 5px 5px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.edit:hover {
+    background-color: var(--lightGreen);
+}
+
+.editInput {
+    width: 380px;
+    height: 25px;
+    border: 3px solid var(--blue);
+    font-family: "Noto Serif", serif;
+}
+
+.editLabel {
+    margin-top: 10px;
+}
+
+#deleteProduct {
+    text-align: center;
+    width: 390px;
+    padding: 15px 15px;
+    background-color: var(--lightGreen);
+    border: none;
+    font-family: "Noto Serif", serif;
+    font-weight: 600;
+    color: var(--sand);
+    margin-top: 15px;
+}
+
+#deleteProduct:hover {
+    background-color: var(--blue);
+}
+
+/*LOG IN*/
+
+#logInFormBox {
+    margin-top: 30px;
+
+}
+#logInFormBox,
+#logInForm,
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+#logInForm,
+#registerForm {
+    width: 400px;
+    padding: 20px;
+}
+
+#logInForm {
+    background-color: var(--blue);
+}
+
+#registerForm {
+    background-color: var(--lightGreen);
+}
+
+#logInForm input,
+#registerForm input {
+    width: 390px;
+    border: none;
+    height: 25px;
+    font-family: "Noto Serif", serif;
+    padding-left: 10px;
+}
+
+#logInForm button,
+#registerForm button {
+    border: 3px solid var(--blue);
+    font-family: "Noto Serif", serif;
+    width: 405px;
+    height: 35px;
+    border: 3px solid white;
+    font-size: 1em;
+    color: white;
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+#logInForm button {
+    background-color: var(--blue);
+}
+
+#registerForm button {
+    background-color: var(--lightGreen);
+}
+
+#logInForm button:hover {
+    background-color: var(--lightGreen);
+    border: 3px solid var(--lightGreen);
+    color: var(--green);
+}
+#registerForm button:hover {
+    background-color: var(--blue);
+    border: 3px solid var(--blue);
+    color: var(--green);
+}
+
