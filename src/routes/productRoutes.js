@@ -26,7 +26,7 @@ router.get('/products/:id', generateProductById);
 router.get('/products', generateHomePage);
 
 //Genera una página con los productos de una categoría
-router.get('/products/category/:categoria', generateProductsByCategory);
+router.get('/products/category/:category', generateProductsByCategory);
 
 //Página de login
 router.get('/dashboard/login', generateLogIn); 

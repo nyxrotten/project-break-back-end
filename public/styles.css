@@ -85,7 +85,30 @@ main {
     border: 2px solid var(--pink);
     color:  var(--sand);
 }
+/*DASHBOARD*/
 
+#mainDashboard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#newProductButton {
+    text-align: center;
+    width: 390px;
+    padding: 15px 15px;
+    background-color: var(--lightGreen);
+    border: none;
+    font-family: "Noto Serif", serif;
+    font-weight: 600;
+    color: white;
+    margin-top: 15px;
+    font-size: 1em;
+}
+
+#newProductButton:hover {
+    background-color: var(--blue);
+}
 /* DASHBOARD/NEW */
 
 .formSection {
@@ -110,7 +133,8 @@ main {
     font-family: "Noto Serif";
 }
 
-.newForm button {
+.newForm button,
+#goDashboardButton {
     margin-top: 20px;
     height: 50px;
     border: none;
@@ -122,7 +146,20 @@ main {
     color: white;
 }
 
-.newForm button:hover {
+#goDashboardButton {
+    text-align: center;
+    background-color: var(--blue);
+    border: 3px solid var(--blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+
+.newForm button:hover,
+#goDashboardButton:hover {
     background-color: var(--pink);
     border: 3px solid var(--pink);
     color: var(--sand);}

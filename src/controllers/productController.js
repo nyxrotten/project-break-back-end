@@ -1,5 +1,6 @@
 const { all } = require("axios");
 const { Product } = require("../models/Product");
+const methodOverride = require('method-override')
 
 
 const htmlHeader = () => {
@@ -24,13 +25,12 @@ const generateMenu = () => {
             <li><a href="/products/category/sweatshirts">Sweatshirts</a></li>
             <li><a href="/products/category/pijamas">Pijamas</a></li>
             <li><a href="/products/category/socks">Socks</a></li>
-            <li><a href="dashboard/login">Login</a></li>
+            <li><a href="/dashboard/login">Login</a></li>
             </ul>
         </nav>
     `;
     return menu;
 };
-
 
 const generateProductById = async (req, res) => {
     try {
@@ -61,6 +61,7 @@ const generateProductById = async (req, res) => {
 
 const generateHomePage = async (req, res) => {
     try {
+        const product = await Product.find({});
         const home = `
         ${htmlHeader()}
         <body>
@@ -68,7 +69,7 @@ const generateHomePage = async (req, res) => {
         </body>
         </html>
         `;
-        res.status(201).send(home);
+        res.status(200).send(home);
     } catch (error) {
         res.status(500).json({message: "Error loading homepage"})
     }
@@ -81,6 +82,9 @@ const generateDashboard = async (req, res) => {
         <body>
         ${generateMenu()}
         <h1>Dashboard</h1>
+        <main id="mainDashboard">
+        <div id="newProductButton"><a href="/dashboard/new">Create new product</a></div>
+        </main>
         </body>
         </html>
         `;
@@ -113,6 +117,7 @@ const newProductForm = async (req, res) => {
             <label for="price">Price</label>
             <input type="text" class="form" id="unitsValue" name="unit">
             <button  id="submitButton">New Product</button>
+            <div id="goDashboardButton"><a href="/dashboard">Go Dashboard</a></div>
         </form>
         </section>
         </body>
@@ -127,9 +132,8 @@ const newProductForm = async (req, res) => {
 
 const generateProductsByCategory = async (req, res) => {
     try {
-        const { productCategory } = req.params;
-        const products = Product.find({category: productCategory});
-
+        const  productCategory = req.params;
+        const products = await Product.find(productCategory);
         const generateProducts = `
         ${htmlHeader()}
         <body>
@@ -137,13 +141,8 @@ const generateProductsByCategory = async (req, res) => {
         </body>
         </html>
         `;
-       console.log(generateProducts)
-        res.status(201).send(generateProducts);
-        
-       
-        
-        
-        
+        //tira el json bien filtrado
+        res.status(200).send(products);
     } catch (error) {
         res.status(500).json({message: "Error generate products by category"})
     }
@@ -153,11 +152,13 @@ const editProductPage = async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findById(id);
+
+      
         const generateEditPage =
         `${htmlHeader()}
         <body>
             <main id="cardPage"
-            <section id="productCard">
+            <form id="productCard" action=" action="/resource?_method=DELETE" method="post">
                 <img src="${product.image}">
                 <label for="newImage" class="editLabel"></label>
                 <input type="text" id="newImage" class="editInput" placeholder="${product.image}">
@@ -184,17 +185,17 @@ const editProductPage = async (req, res) => {
                 <button  class="edit" id="editUnits"">Edit units</button>
 
                 <button id="editSave">SAVE</button>
-                <button id="deleteProduct">DELETE</button>
+                <a id="deleteProduct" href="/dashboard/${id}/delete">DELETE</a>
 
                 <a id="goDashboard" href="/dashboard">DASHBOARD</a>
-            </section>
+            </form>
             </main>
             <script>
-                const deleteButton = document.getElementById("deleteProduct");
-                deleteButton.addEventListener("click", console.log("hola"))
+               
             </script>
         </body>`;
-        res.status(201).send(generateEditPage);
+        console.log(deleteProduct)
+        res.status(200).send(generateEditPage);
     } catch (error) {
         res.status(500).json({message: "Error finding product by id"})
     }
@@ -230,7 +231,8 @@ const generateLogIn = async (req, res) => {
 
 const deleteById = async (req, res) => {
     try {
-        const product = await Product.findByIdAndDelete(req.params.id);
+        const {id} = req.params;
+        const product = await Product.findByIdAndDelete(id);
         if (!product) {
             return res.status(404).send("Id not found");
         }
